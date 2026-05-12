@@ -56,21 +56,40 @@ const workflow = [
   ['납품', 'MP4, 원본, 음성, 썸네일, 강의자료 정리', '1시간'],
 ];
 
-const files = [
-  ['최종 영상', 'L01_AI_Mindset_final_20260515.mp4'],
-  ['원본 영상', 'L01_screen_recording_raw.mov'],
-  ['원본 음성', 'L01_voice_raw.wav'],
-  ['편집 프로젝트', 'L01_edit_project.prproj'],
-  ['강의자료', 'L01_script.md, L01_assets, L01_sample_data'],
-  ['검수표', 'L01_QA_checklist.md'],
-];
-
-const risks = [
-  ['4강 이후 실습 앱 미완성', '앱 제작과 교안 작성을 하루 이상 겹치지 않게 배치'],
-  ['음성 품질 문제', '강의별 30~45분 재녹음 버퍼와 음량 정규화 시간 확보'],
-  ['실습 중 오류 발생', '녹화 전 리허설에서 데모 데이터 고정'],
-  ['프로젝트 P3 범위 과대', 'P3는 평가 기준/템플릿 중심으로 녹화'],
-  ['검수 누락', '파일 확보 기준을 강의별 체크리스트로 강제'],
+const resourceGroups = [
+  {
+    title: '공통 자료',
+    items: [
+      ['강의 커리큘럼', 'https://github.com/heekeunlee/lecture_assist001'],
+      ['용어사전', 'https://github.com/heekeunlee/lecture_assist001/tree/main/src/data'],
+      ['가이드북 자료', 'URL 입력 예정'],
+      ['관리자 일정 보고서', 'https://heekeunlee.github.io/lecture_schedule/'],
+    ],
+  },
+  {
+    title: '각 강의자료 17가지',
+    items: Array.from({ length: 17 }, (_, index) => {
+      const id = String(index + 1).padStart(2, '0');
+      const known = {
+        '01': 'https://github.com/heekeunlee/lecture01',
+        '02': 'https://github.com/heekeunlee/lecture02',
+        '03': 'https://github.com/heekeunlee/lecture03',
+      };
+      return [`강의자료 ${id}`, known[id] || 'URL 입력 예정'];
+    }),
+  },
+  {
+    title: '프로젝트 3가지',
+    items: [
+      ['P1 자동 데이터 분석기', 'URL 입력 예정'],
+      ['P2 실무 자동화 보고서 앱', 'URL 입력 예정'],
+      ['P3 나만의 엔지니어 툴킷', 'URL 입력 예정'],
+    ],
+  },
+  {
+    title: '각 강의별 동영상 17가지',
+    items: Array.from({ length: 17 }, (_, index) => [`강의 동영상 ${String(index + 1).padStart(2, '0')}`, 'URL 입력 예정']),
+  },
 ];
 
 function dateOffset(date) {
@@ -134,10 +153,19 @@ document.querySelector('#workBreakdown').innerHTML = workflow.map(([step, body, 
   <article><strong>${step}</strong><p>${body}</p><span>${time}</span></article>
 `).join('');
 
-document.querySelector('#fileStandard').innerHTML = files.map(([label, example]) => `
-  <article><span>${label}</span><code>${example}</code></article>
-`).join('');
-
-document.querySelector('#risks').innerHTML = risks.map(([risk, response]) => `
-  <article><strong>${risk}</strong><p>${response}</p></article>
+document.querySelector('#resourceLinks').innerHTML = resourceGroups.map((group) => `
+  <article class="resource-group">
+    <h3>${group.title}</h3>
+    <div class="resource-list">
+      ${group.items.map(([label, url]) => {
+        const hasUrl = url !== 'URL 입력 예정';
+        return `
+          <div class="resource-item">
+            <span>${label}</span>
+            ${hasUrl ? `<a href="${url}" target="_blank" rel="noreferrer">${url}</a>` : `<code>${url}</code>`}
+          </div>
+        `;
+      }).join('')}
+    </div>
+  </article>
 `).join('');
