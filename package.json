@@ -1,0 +1,9 @@
+{
+  "name": "lecture-schedule-report",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "python3 -m http.server 8000"
+  }
+}

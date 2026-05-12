@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>강의 제작 일정 보고서</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Manager Schedule Report</p>
+          <h1>17개 강좌 + 3개 프로젝트 제작 간트차트</h1>
+          <p class="hero-text">
+            강의 교안, 실습 앱, 동영상 촬영, 음성 녹음, 편집, 검수, 최종 녹화본 파일 확보까지 한눈에 보는 제작 운영표입니다.
+          </p>
+          <div class="hero-meta">
+            <span>기준일 2026-05-12</span>
+            <span>최종 확보 2026-07-17</span>
+            <span>총 67일</span>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <span class="panel-label">전체 진행 목표</span>
+          <strong>2026.07.17</strong>
+          <small>모든 녹화본, 원본 음성, 편집본, 검수표 확보</small>
+        </div>
+      </section>
+
+      <section class="kpi-grid" aria-label="핵심 지표">
+        <article><span>본강의</span><strong>17</strong><small>각 40분 기준</small></article>
+        <article><span>프로젝트</span><strong>3</strong><small>P1, P2, P3</small></article>
+        <article><span>제작 파이프라인</span><strong>9</strong><small>기획부터 납품까지</small></article>
+        <article><span>주차 운영</span><strong>W0-W9</strong><small>평일 제작, 주말 버퍼</small></article>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><p class="eyebrow">Milestones</p><h2>관리용 마일스톤</h2></div>
+          <p>저장소 기반 1~3강을 먼저 확보하고, 이후 데이터 자동화, 보고서 자동화, 고도화 실무, 최종 납품 순서로 묶었습니다.</p>
+        </div>
+        <div id="milestones" class="milestone-grid"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div><p class="eyebrow">Gantt</p><h2>강좌별 제작 간트차트</h2></div>
+          <p>각 바는 강의별 제작 시작일부터 최종 파일 확보일까지의 기간을 의미합니다.</p>
+        </div>
+        <div class="timeline-frame">
+          <div id="timelineHeader" class="timeline-header"></div>
+          <div id="ganttRows" class="gantt-rows"></div>
+        </div>
+      </section>
+
+      <section class="section two-col">
+        <div>
+          <div class="section-head compact"><div><p class="eyebrow">Weekly Plan</p><h2>주차별 운영 계획</h2></div></div>
+          <div id="weeklyPlan" class="table-card"></div>
+        </div>
+        <div>
+          <div class="section-head compact"><div><p class="eyebrow">Work Breakdown</p><h2>세부 업무</h2></div></div>
+          <div id="workBreakdown" class="workflow"></div>
+        </div>
+      </section>
+
+      <section class="section two-col">
+        <div>
+          <div class="section-head compact"><div><p class="eyebrow">File Standard</p><h2>파일 확보 기준</h2></div></div>
+          <div id="fileStandard" class="check-list"></div>
+        </div>
+        <div>
+          <div class="section-head compact"><div><p class="eyebrow">Risks</p><h2>리스크와 버퍼</h2></div></div>
+          <div id="risks" class="risk-list"></div>
+        </div>
+      </section>
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
